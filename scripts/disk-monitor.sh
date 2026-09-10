@@ -25,8 +25,5 @@ while read -r filesystem size used free percent; do
 done < <(df -h --output=source,size,used,avail,pcent | tail -n +2)
 
 echo
-echo "OK      : $ok"
-echo "WARNING : $warning"
-echo
 echo "==================================================="
 
