@@ -30,8 +30,10 @@ do
 
     tput cup 15 0
     printf "=============================================="
-    
-    tput cup 16 0
 
+    tput cup 16 0
+echo "PRESS CTRL+C to Stop"
     sleep 1
 done
+
+echo "PRESS CTRL+C to stop Running"
