@@ -1,0 +1,17 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Backups
+backups/
+*.sql
+*.sql.gz
+
+# Dependencies / builds
+node_modules/
+dist/
