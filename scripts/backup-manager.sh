@@ -6,6 +6,11 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 BACKUP_DIR="$PROJECT_DIR/backups"
 SOURCE_DIR="$PROJECT_DIR/logs"
 
+if [ ! -d "$SOURCE_DIR" ]; then
+	echo "Error: source directory not found"
+	exit 1
+fi
+
 mkdir -p "$BACKUP_DIR"
 
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
@@ -28,11 +33,22 @@ if tar -czf - "$SOURCE_DIR" | pv  > "$BACKUP_FILE"; then
         echo
         echo "Backup failed: archive corrupted."
         rm -f "$BACKUP_FILE"
-        exit 1
+        exit 2
     fi
 else
     echo
     echo "Backup failed."
     rm -f "$BACKUP_FILE"
-    exit 1
+    exit 2
 fi
+BACKUP_COUNT=$(find "$BACKUP_DIR" -name "novaops_backup_*.tar.gz" | wc -l)
+
+if [ "$BACKUP_COUNT" -gt 5 ]; then
+	 find "$BACKUP_DIR" -name "novaops_backup_*.tar.gz" -printf '%T@ %p\n' |
+        sort -n |
+        head -n -5 |
+        cut -d' ' -f2- |
+        xargs -r rm
+fi
+
+
