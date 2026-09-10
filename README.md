@@ -20,30 +20,60 @@ NovaOps will progressively provide scripts and infrastructure for:
 - Deployment automation
 - CI/CD foundations
 
+## Current Features
+
+The current version of NovaOps includes:
+
+- System information monitoring
+- Process monitoring
+- Linux service monitoring
+- Disk usage monitoring
+- Log analysis
+- Backup creation and retention
+- System alert detection
+- Centralized CLI
+- Cron-based alert automation
+
+### NovaOps CLI
+
+NovaOps provides a centralized command-line interface:
+
+```bash
+./novaops.sh help
+
 ## Project Structure
 
 ```text
-novaops/
+.
+├── backups
+│   ├── novaops_backup_2026-09-10_13-24-08.tar.gz
+│   ├── novaops_backup_2026-09-10_13-27-04.tar.gz
+│   ├── novaops_backup_2026-09-10_14-30-24.tar.gz
+│   ├── novaops_backup_2026-09-10_14-51-10.tar.gz
+│   └── novaops_backup_2026-09-10_14-57-53.tar.gz
+├── config
+├── docker
+│   ├── backend.Dockerfile
+│   ├── docker-compose.yml
+│   └── frontend.Dockerfile
+├── logs
+│   ├── access.log
+│   ├── alerts.log
+│   ├── app.log
+│   └── error.log
+├── novaops.sh
 ├── README.md
-├── scripts/
-│   ├── server-info.sh
-│   ├── monitor.sh
-│   ├── log-analyzer.sh
-│   ├── backup.sh
-│   ├── restore.sh
-│   ├── healthcheck.sh
-│   ├── deploy.sh
-│   └── cleanup.sh
-├── logs/
-│   ├── access.log
-│   ├── error.log
-│   └── app.log
-├── backups/
-├── config/
-└── docker/
-    ├── frontend.Dockerfile
-    ├── backend.Dockerfile
-    └── docker-compose.yml
+└── scripts
+    ├── alert-system.sh
+    ├── backup-manager.sh
+    ├── cron-automation.sh
+    ├── disk-monitor.sh
+    ├── log-analyzer.sh
+    ├── monitoring
+    │   ├── monitor.sh
+    │   ├── process-monitor.sh
+    │   └── system-info.sh
+    └── service-monitor.sh
 
 ## Architecture
 
